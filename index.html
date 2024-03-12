@@ -12,10 +12,51 @@
     <link rel="stylesheet" href="./styles.css">
     <title>Text Encryptor</title>
 </head>
-<h1>Hello World</h1>
 
 <body>
-<script src="./app.js"></script>
+
+    <!--HEADER-->
+    <header>
+        <div class="logo-container">
+            <img src="./assets/alura.svg" alt="alura logo">
+        </div>
+    </header>
+    <main>
+        <!--TEXT INPUT-->
+        <section class="text-container">
+            <label for="text-input"></label>
+            <textarea name="input" id="text-input" cols="30" rows="30" required
+                placeholder="Ingrese el texto aqui"></textarea>
+            <!--SUBMIT TEXT-->
+            <div class="submit">
+                <div class="submit-warning">
+                    <img src="./assets/exclamation.svg" alt="exclamation mark">
+                    <p>
+                        Solo letras minúsculas y sin acentos
+                    </p>
+                </div>
+                <div class="submit-action">
+                    <button class="submit-action__encrypt" type="submit" id="encrypt">Encriptar</button>
+                    <button class="submit-action__decrypt" type="submit" id="decrypt">Desencriptar</button>
+                </div>
+            </div>
+        </section>
+        <!--RESULTS-->
+        <section class="output">
+            <div class="output-container" id="output-container">
+
+            </div>
+            <div class="submit-copy">
+
+            </div>
+        </section>
+    </main>
+    <!--FOOTER-->
+    <footer>
+        <p>Coded by <a id="profile-link" href="https://github.com/cuauh-cabrera" target="_blank"><i
+                    class="fab fa-github"></i> Cuau Cabrera</a></p>
+    </footer>
+    <script src="./app.js"></script>
 </body>
 
 </html>
