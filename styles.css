@@ -200,3 +200,63 @@ footer > p > a:visited {
     height: 20vh;
   }
 }
+
+/* 1024px */
+@media (min-width: 1024px) {
+  main {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .text-container {
+    width: 62%;
+    height: 90vh;
+  }
+
+  .text-container > textarea {
+    height: 75vh;
+  }
+
+  .output {
+    width: 35%;
+    height: 90vh;
+  }
+
+  .output-container {
+    height: 80vh;
+    background-image: url(./assets/Muñeco.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+/* 1440px */
+@media (min-width: 1440px) {
+  .text-container {
+    width: 80%;
+    height: 85vh;
+  }
+
+  .output {
+    height: 85vh;
+  }
+
+  .output-container {
+    width: 85%;
+    height: 85vh;
+    background-image: url(./assets/Muñeco.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .submit {
+    width: 95%;
+  }
+
+  footer {
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
