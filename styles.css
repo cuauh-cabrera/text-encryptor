@@ -58,6 +58,11 @@ header {
   height: 60vh;
   margin-top: 2.5rem;
   background-color: #f3f5fc;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #0a3871;
+  line-height: 48px;
+  text-align: left;
 }
 
 ::placeholder {
@@ -115,6 +120,7 @@ footer > p {
 }
 
 .submit-action__encrypt {
+  cursor: pointer;
   width: 95%;
   border-radius: 24px;
   background-color: #0a3871;
@@ -129,6 +135,7 @@ footer > p {
 }
 
 .submit-action__decrypt {
+  cursor: pointer;
   width: 95%;
   border: solid 1px #0a3871;
   border-radius: 24px;
@@ -159,6 +166,48 @@ footer > p {
   width: 95%;
   height: 90%;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.output-container__header {
+  width: 95%;
+  height: auto;
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 29px;
+  color: #343a40;
+}
+
+.output-container__text {
+  width: 95%;
+  height: auto;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 24px;
+  color: #495057;
+}
+
+.output-encrypted {
+  width: 95%;
+  height: auto;
+  margin-top: 1rem;
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #495057;
+  line-height: 36px;
+}
+
+/* Hide output warning message on click event */
+.no-show {
+  display: none;
 }
 
 /* FOOTER */
@@ -224,6 +273,12 @@ footer > p > a:visited {
 
   .output-container {
     height: 80vh;
+  }
+
+  .output-container__bkg {
+    width: 80%;
+    height: 50vh;
+    margin-top: 2rem;
     background-image: url(./assets/Muñeco.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -245,10 +300,6 @@ footer > p > a:visited {
   .output-container {
     width: 85%;
     height: 85vh;
-    background-image: url(./assets/Muñeco.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
   }
 
   .submit {
