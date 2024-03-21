@@ -119,7 +119,7 @@ footer > p {
   gap: 1rem;
 }
 
-.submit-action__encrypt {
+.submit-action__dark {
   cursor: pointer;
   width: 95%;
   border-radius: 24px;
@@ -130,11 +130,11 @@ footer > p {
   padding: 1.15rem;
 }
 
-.submit-action__encrypt:hover {
+.submit-action__dark:hover {
   background-color: #072b61;
 }
 
-.submit-action__decrypt {
+.submit-action__white {
   cursor: pointer;
   width: 95%;
   border: solid 1px #0a3871;
@@ -146,7 +146,7 @@ footer > p {
   padding: 1.15rem;
 }
 
-.submit-action__decrypt:hover {
+.submit-action__white:hover {
   background-color: #eff1fa;
 }
 
@@ -164,12 +164,13 @@ footer > p {
   border-radius: 32px;
   box-shadow: 0 24px 32px -8px rgba(0, 0, 0, 0.08);
   width: 95%;
-  height: 90%;
+  height: fit-content;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding-bottom: 0.25rem;
 }
 
 .output-container__header {
@@ -203,6 +204,20 @@ footer > p {
   font-weight: 400;
   color: #495057;
   line-height: 36px;
+}
+
+.output-container__action {
+  width: 100%;
+  height: fit-content;
+  order: 5;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.output-container__action > button:first-of-type {
+  width: 50%;
 }
 
 /* Hide output warning message on click event */
@@ -244,10 +259,6 @@ footer > p > a:visited {
     width: 95%;
     flex-direction: row;
   }
-
-  .output-container {
-    height: 20vh;
-  }
 }
 
 /* 1024px */
@@ -273,6 +284,7 @@ footer > p > a:visited {
 
   .output-container {
     height: 80vh;
+    position: relative;
   }
 
   .output-container__bkg {
@@ -283,6 +295,16 @@ footer > p > a:visited {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+  }
+
+  .output-container__action {
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 0.25rem;
+  }
+
+  .output-container__action > button:first-of-type {
+    width: 50%;
   }
 }
 

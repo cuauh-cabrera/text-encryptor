@@ -6,7 +6,7 @@ const textContainer = document.querySelector('#output-container');
 const outputHeader = document.querySelector('#output-header');
 const outputText = document.querySelector('#output-text');
 const outputBkg = document.querySelector('#output-bkg');
-
+const outputActions = document.querySelector('#output-action');
 //////////////* Encrypt Text *///////////////////
 
 // Encryption keys
@@ -17,7 +17,6 @@ const encryptKeys = {
     'o': 'ober',
     'u': 'ufat'
 };
-
 // Encryption RegEx
 const encryptExp = /[aeiou]/gi;
 
@@ -36,6 +35,15 @@ btnEncrypt.addEventListener('click', () => {
     encrypted.classList.toggle('output-encrypted');
     encrypted.textContent = `${encryptedText}`;
     textContainer.appendChild(encrypted);
+    // Add reset text button
+    const resetBtn = document.createElement('button');
+    resetBtn.setAttribute('id', 'reset-btn');
+    resetBtn.classList.toggle('submit-action__white');
+    resetBtn.textContent = 'Reiniciar';
+    outputActions.appendChild(resetBtn);
+    resetBtn.addEventListener('click', () => {
+        location.reload();
+    })
 });
 
 /////////////* Decrypt Text*/////////////////////
@@ -48,7 +56,6 @@ const decryptKeys = {
     'ober': 'o',
     'ufat': 'u'
 };
-
 // Decryption RegEx
 const decryptExp = /(ai|enter|imes|ober|ufat)/gi;
 
@@ -67,4 +74,13 @@ btnDecrypt.addEventListener('click', () => {
     decrypted.classList.toggle('output-encrypted');
     decrypted.textContent = `${decryptedText}`;
     textContainer.appendChild(decrypted);
+    // Add reset text button
+    const resetBtn = document.createElement('button');
+    resetBtn.setAttribute('id', 'reset-btn');
+    resetBtn.classList.toggle('submit-action__white');
+    resetBtn.textContent = 'Reiniciar';
+    outputActions.appendChild(resetBtn);
+    resetBtn.addEventListener('click', () => {
+        location.reload();
+    })
 });
