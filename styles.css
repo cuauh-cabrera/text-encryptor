@@ -302,11 +302,10 @@ footer > p > a:visited {
     bottom: 0;
     padding-bottom: 0.25rem;
   }
-  
+
   .output-container__action > button:first-of-type {
     width: 50%;
   }
-  
 }
 
 /* 1440px */
