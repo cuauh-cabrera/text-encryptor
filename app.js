@@ -31,6 +31,7 @@ let encryptedText;
 let decryptedText;
 let encryptError = 'Por favor ingresa el mensaje que deseas encriptar';
 let decryptError = 'Por favor ingresa el mensaje que deseas desencriptar';
+let clickReset = 'Da click en Reiniciar para procesar un nuevo mensaje';
 
 /////////*Functions*/////////////
 
@@ -69,6 +70,11 @@ function appendResetTextBtn() {
         location.reload();
     });
 }
+// Disable encrypt button
+function disableBtn () {
+    btnEncrypt.disabled = true;
+    btnDecrypt.disabled = true;
+}
 
 ///////////////*Event handlers*///////////////
 
@@ -85,17 +91,19 @@ btnDecrypt.addEventListener('click', (event) => {
         event.stopImmediatePropagation();
     }
 });
-// Encrypt
+/// Encrypt
 btnEncrypt.addEventListener('click', () => {
     encryptText();
     hideOutputMessage();
     appendEncryptedText();
     appendResetTextBtn();
+    disableBtn();
 });
-// Decrypt
+/// Decrypt
 btnDecrypt.addEventListener('click', () => {
     decryptText();
     hideOutputMessage();
     appendEncryptedText();
     appendResetTextBtn();
+    disableBtn();
 });
