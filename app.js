@@ -29,24 +29,29 @@ const decryptExp = /(ai|enter|imes|ober|ufat)/gi;
 // Setup vars
 let encryptedText;
 let decryptedText;
+let encryptError = 'Por favor ingresa el mensaje que deseas encriptar';
+let decryptError = 'Por favor ingresa el mensaje que deseas desencriptar';
+
+/////////*Functions*/////////////
+
 // Encrypt function
-function encryptText () {
+function encryptText() {
     let inputText = inputValue.value.toLowerCase();
     encryptedText = inputText.replace(encryptExp, keys => encryptKeys[keys]);
 }
 // Decrypt function
-function decryptText () {
+function decryptText() {
     let inputText = inputValue.value.toLowerCase();
     encryptedText = inputText.replace(decryptExp, keys => decryptKeys[keys]);
 }
 // Hide output message function
-function hideOutputMessage () {
+function hideOutputMessage() {
     outputHeader.classList.toggle('no-show');
     outputText.classList.toggle('no-show');
     outputBkg.classList.toggle('no-show');
 }
 // Append encrypted text function
-function appendEncryptedText () {
+function appendEncryptedText() {
     const encrypted = document.createElement('p');
     encrypted.setAttribute('id', 'output-encrypted');
     encrypted.classList.toggle('output-encrypted');
@@ -54,24 +59,39 @@ function appendEncryptedText () {
     textContainer.appendChild(encrypted);
 }
 // Append reset button
-function appendResetTextBtn () {
+function appendResetTextBtn() {
     const resetBtn = document.createElement('button');
-resetBtn.setAttribute('id', 'reset-btn');
-resetBtn.classList.toggle('submit-action__white');
-resetBtn.textContent = 'Reiniciar';
-outputActions.appendChild(resetBtn);
-resetBtn.addEventListener('click', () => {
-    location.reload();
-});
+    resetBtn.setAttribute('id', 'reset-btn');
+    resetBtn.classList.toggle('submit-action__white');
+    resetBtn.textContent = 'Reiniciar';
+    outputActions.appendChild(resetBtn);
+    resetBtn.addEventListener('click', () => {
+        location.reload();
+    });
 }
+
 ///////////////*Event handlers*///////////////
+
+/// Input check
+btnEncrypt.addEventListener('click', (event) => {
+    if (inputValue.value === null || inputValue.value === undefined || inputValue.value.trim() === '') {
+        alert(`${encryptError}`);
+        event.stopImmediatePropagation();
+    }
+});
+btnDecrypt.addEventListener('click', (event) => {
+    if (inputValue.value === null || inputValue.value === undefined || inputValue.value.trim() === '') {
+        alert(`${decryptError}`);
+        event.stopImmediatePropagation();
+    }
+});
 // Encrypt
 btnEncrypt.addEventListener('click', () => {
     encryptText();
     hideOutputMessage();
     appendEncryptedText();
     appendResetTextBtn();
-}); 
+});
 // Decrypt
 btnDecrypt.addEventListener('click', () => {
     decryptText();
