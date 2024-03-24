@@ -27,11 +27,11 @@ const decryptKeys = {
 const encryptExp = /[aeiou]/gi;
 const decryptExp = /(ai|enter|imes|ober|ufat)/gi;
 // Setup vars
+const alertWarning = 'Aviso';
 let encryptedText;
-let decryptedText;
 let encryptError = 'Por favor ingresa el mensaje que deseas encriptar';
 let decryptError = 'Por favor ingresa el mensaje que deseas desencriptar';
-let clickReset = 'Da click en Reiniciar para procesar un nuevo mensaje';
+
 
 /////////*Functions*/////////////
 
@@ -71,9 +71,20 @@ function appendResetTextBtn() {
     });
 }
 // Disable encrypt button
-function disableBtn () {
+function disableBtn() {
     btnEncrypt.disabled = true;
     btnDecrypt.disabled = true;
+}
+
+// Input alert
+function inputAlert (title,text,icon,confirmButtonColor,iconColor) {
+    Swal.fire({
+        title,
+        text,
+        icon,
+        confirmButtonColor,
+        iconColor
+    });
 }
 
 ///////////////*Event handlers*///////////////
@@ -81,13 +92,13 @@ function disableBtn () {
 /// Input check
 btnEncrypt.addEventListener('click', (event) => {
     if (inputValue.value === null || inputValue.value === undefined || inputValue.value.trim() === '') {
-        alert(`${encryptError}`);
+        inputAlert(alertWarning,encryptError,'warning','#0A3871','#0A3871');
         event.stopImmediatePropagation();
     }
 });
 btnDecrypt.addEventListener('click', (event) => {
     if (inputValue.value === null || inputValue.value === undefined || inputValue.value.trim() === '') {
-        alert(`${decryptError}`);
+        inputAlert(alertWarning,decryptError,'warning','#0A3871','#0A3871');
         event.stopImmediatePropagation();
     }
 });
