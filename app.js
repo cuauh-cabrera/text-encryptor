@@ -28,6 +28,9 @@ const encryptExp = /[aeiou]/gi;
 const decryptExp = /(ai|enter|imes|ober|ufat)/gi;
 // Setup vars
 const alertWarning = 'Aviso';
+const copiedText = 'Texto copiado al porta papeles';
+const copyTextError = 'Ocurrio un error al ejecutar la funcion appendCopyTextBtn';
+const alertIconColor = '#0A3871';
 let encryptedText;
 let encryptError = 'Por favor ingresa el mensaje que deseas encriptar';
 let decryptError = 'Por favor ingresa el mensaje que deseas desencriptar';
@@ -70,14 +73,32 @@ function appendResetTextBtn() {
         location.reload();
     });
 }
+// Append copy text button
+function appendCopyTextBtn() {
+    const copyTextBtn = document.createElement('button');
+    copyTextBtn.setAttribute('id', 'copy-btn');
+    copyTextBtn.classList.toggle('submit-action__white');
+    copyTextBtn.textContent = 'Copiar';
+    outputActions.appendChild(copyTextBtn);
+    copyTextBtn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(encryptedText.trim());
+            inputAlert(alertWarning,copiedText,'success',alertIconColor,alertIconColor);
+            setTimeout (() => {
+                location.reload();
+            }, 2000);
+        } catch (error) {
+            alert(`Error fatal ${copyTextError}`);
+        }
+    })
+}
 // Disable encrypt button
 function disableBtn() {
     btnEncrypt.disabled = true;
     btnDecrypt.disabled = true;
 }
-
 // Input alert
-function inputAlert (title,text,icon,confirmButtonColor,iconColor) {
+function inputAlert(title, text, icon, confirmButtonColor, iconColor) {
     Swal.fire({
         title,
         text,
@@ -92,13 +113,13 @@ function inputAlert (title,text,icon,confirmButtonColor,iconColor) {
 /// Input check
 btnEncrypt.addEventListener('click', (event) => {
     if (inputValue.value === null || inputValue.value === undefined || inputValue.value.trim() === '') {
-        inputAlert(alertWarning,encryptError,'warning','#0A3871','#0A3871');
+        inputAlert(alertWarning, encryptError, 'warning', alertIconColor, alertIconColor);
         event.stopImmediatePropagation();
     }
 });
 btnDecrypt.addEventListener('click', (event) => {
     if (inputValue.value === null || inputValue.value === undefined || inputValue.value.trim() === '') {
-        inputAlert(alertWarning,decryptError,'warning','#0A3871','#0A3871');
+        inputAlert(alertWarning, decryptError, 'warning', '#0A3871', '#0A3871');
         event.stopImmediatePropagation();
     }
 });
@@ -109,6 +130,7 @@ btnEncrypt.addEventListener('click', () => {
     appendEncryptedText();
     appendResetTextBtn();
     disableBtn();
+    appendCopyTextBtn();
 });
 /// Decrypt
 btnDecrypt.addEventListener('click', () => {
@@ -117,4 +139,5 @@ btnDecrypt.addEventListener('click', () => {
     appendEncryptedText();
     appendResetTextBtn();
     disableBtn();
+    appendCopyTextBtn();
 });
