@@ -214,9 +214,14 @@ footer > p {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  gap: 1rem;
 }
 
 .output-container__action > button:first-of-type {
+  width: 50%;
+}
+
+.output-container__action > button:last-child {
   width: 50%;
 }
 
